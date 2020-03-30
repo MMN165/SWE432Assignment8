@@ -69,7 +69,7 @@ static String Style ="https://www.cs.gmu.edu/~offutt/classes/432/432-style.css";
 public void doPost (HttpServletRequest request, HttpServletResponse response)
    throws ServletException, IOException
 {
-   Float rslt   = new Float(0.0);
+  /* Float rslt   = new Float(0.0);
    Float lhsVal = new Float(0.0);
    Float rhsVal = new Float(0.0);
    String operation = request.getParameter("Operation");
@@ -92,12 +92,12 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
    {
       rslt = new Float(lhsVal.floatValue() * rhsVal.floatValue());
    }
-
+	*/
    response.setContentType("text/html");
    PrintWriter out = response.getWriter();
    PrintHead(out);
    PrintBody(out, lhsStr, rhsStr, rslt.toString());
-   PrintTail(out);
+   PrintTail(out); 
 }  // End doPost
 
 /** *****************************************************
