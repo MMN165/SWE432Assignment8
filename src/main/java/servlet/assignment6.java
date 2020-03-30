@@ -139,30 +139,100 @@ private void PrintBody (PrintWriter out, String lhs, String rhs, String rslt)
    out.println("<p>");
    out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
    out.println("</p>");
+   out.println("<p><b>Collaboration Summary:</b> Megan made the radio buttons and Thomas made the JavaScript buttons. We both worked debugged.</p>");
+	 out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
+   out.println("<br>");
+
+	// these three lines are from the original servlet
    out.println("<form method=\"post\"");
    out.println(" action=\"https://" + Domain + Path + Servlet + "\">");
    out.println("");
-   out.println(" <table>");
-   out.println("  <tr>");
-   out.println("   <td>First value:");
-   out.println("   <td><input type=\"text\" name=\"LHS\" value=\"" + lhs + "\" size=5>");
-   out.println("  </tr>");
-   out.println("  <tr>");
-   out.println("   <td>Second value:");
-   out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rhs + "\" size=5>");
-   out.println("  </tr>");
-   out.println("  <tr>");
-   out.println("   <td>Result:");
-   out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rslt + "\" size=6>");
-   out.println("  </tr>");
-   out.println(" </table>");
-   out.println(" <br>");
-   out.println(" <br>");
-   out.println(" <input type=\"submit\" value=\"" + OperationAdd + "\" name=\"Operation\">");
-   out.println(" <input type=\"submit\" value=\"" + OperationSub + "\" name=\"Operation\">");
-   out.println(" <input type=\"submit\" value=\"" + OperationMult + "\" name=\"Operation\">");
-   out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
-   out.println("</form>");
+   
+out.println("What year are you?");         
+out.println("  <select name="School Year">"); 
+out.println("  <option value="Freshman" selected="selected">Freshman</option>"); 
+out.println("  <option value="Sophomore">Sophomore</option>"); 
+out.println("  <option value="Junior">Junior</option>"); 
+out.println(" <option value="Senior">Senior</option>"); 
+out.println("</select>"); 
+
+out.println("<br> <br> Please rate the following GMU buildings on a scale of 1 (worst) to 5 (best): <br> <br> ");
+
+out.println("<b>Fenwick Library</b>
+out.println("<br>
+out.println("  <input type="radio" name="Fenwick" id="one" value="1" /> 
+out.println("  <label for="one">1</label> ");
+out.println("  <input type="radio" name="Fenwick" id="two" value="2" /> ");
+out.println(" <label for="two">2</label> ");
+out.println("  <input type="radio" name="Fenwick" id="three" value="3" /> ");
+out.println(" <label for="three">3</label> ");
+out.println("  <input type="radio" name="Fenwick" id="four" value="4" />");
+out.println(" <label for="four">4</label>");
+out.println("  <input type="radio" name="Fenwick" id="five" value="5" />");
+out.println(" <label for="five">5</label>");
+
+out.println("<br> ");
+out.println("<b>Johnson Center</b>");
+out.println("<br>");
+out.println("  <input type="radio" name="JC" id="one" value="1" />"); 
+out.println("  <label for="one">1</label>"); 
+out.println("  <input type="radio" name="JC" id="two" value="2" />");
+out.println(" <label for="two">2</label>");
+out.println("  <input type="radio" name="JC" id="three" value="3" />");
+out.println(" <label for="three">3</label>");
+out.println("  <input type="radio" name="JC" id="four" value="4" />");
+out.println(" <label for="four">4</label>");
+out.println("  <input type="radio" name="JC" id="five" value="5" />");
+out.println(" <label for="five">5</label>");
+
+out.println("<br>");
+
+out.println("<b>Robinson Hall B</b>");
+out.println("<br>");
+out.println("  <input type="radio" name="RB" id="one" value="1" /> ");
+out.println("  <label for="one">1</label>"); 
+out.println("  <input type="radio" name="RB" id="two" value="2" />");
+out.println(" <label for="two">2</label>");
+out.println("  <input type="radio" name="RB" id="three" value="3" />");
+out.println(" <label for="three">3</label>");
+out.println("  <input type="radio" name="RB" id="four" value="4" />");
+out.println("<label for="four">4</label>");
+out.println("  <input type="radio" name="RB" id="five" value="5" />");
+out.println(" <label for="five">5</label>");
+
+out.println("<br>");
+
+out.println("<b>Southside</b>");
+out.println("<br>");
+out.println("  <input type="radio" name="Southside" id="one" value="1" />"); 
+out.println("  <label for="one">1</label>"); 
+out.println("  <input type="radio" name="Southside" id="two" value="2" />");
+out.println(" <label for="two">2</label>");
+out.println("  <input type="radio" name="Southside" id="three" value="3" /");
+out.println(" <label for="three">3</label>");
+out.println("  <input type="radio" name="Southside" id="four" value="4" />");
+out.println(" <label for="four">4</label>");
+out.println("  <input type="radio" name="Southside" id="five" value="5" />");
+out.println(" <label for="five">5</label>");
+
+out.println("<br>");
+
+out.println("<b>Volgenau School of Engineering</b>");
+out.println("<br>");
+out.println("  <input type="radio" name="VSE" id="one" value="1" /> ");
+out.println("  <label for="one">1</label> ");
+out.println("  <input type="radio" name="VSE" id="two" value="2" />");
+out.println(" <label for="two">2</label>");
+out.println("  <input type="radio" name="VSE" id="three" value="3" />");
+out.println(" <label for="three">3</label>");
+out.println("  <input type="radio" name="VSE" id="four" value="4" />");
+out.println(" <label for="four">4</label>");
+out.println("out.println("  <input type="radio" name="VSE" id="five" value="5" />");
+out.println(" <label for="five">5</label>");
+out.println("<br>");
+
+out.println("<input type="submit" onclick="displayRadioValue() value="submit""></button>");
+
    out.println("");
    out.println("</body>");
 } // End PrintBody
