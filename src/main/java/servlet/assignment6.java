@@ -69,7 +69,7 @@ static String Style ="https://www.cs.gmu.edu/~offutt/classes/432/432-style.css";
 public void doPost (HttpServletRequest request, HttpServletResponse response)
    throws ServletException, IOException
 {
-  /* Float rslt   = new Float(0.0);
+/*   Float rslt   = new Float(0.0);
    Float lhsVal = new Float(0.0);
    Float rhsVal = new Float(0.0);
    String operation = request.getParameter("Operation");
@@ -92,12 +92,12 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
    {
       rslt = new Float(lhsVal.floatValue() * rhsVal.floatValue());
    }
-	*/
+*/
    response.setContentType("text/html");
    PrintWriter out = response.getWriter();
    PrintHead(out);
    PrintBody(out, lhsStr, rhsStr, rslt.toString());
-   PrintTail(out); 
+   PrintTail(out);
 }  // End doPost
 
 /** *****************************************************
@@ -158,9 +158,9 @@ out.println("</select>");
 
 out.println("<br> <br> Please rate the following GMU buildings on a scale of 1 (worst) to 5 (best): <br> <br> ");
 
-out.println("<b>Fenwick Library</b>
-out.println("<br>
-out.println("  <input type="radio" name="Fenwick" id="one" value="1" /> 
+out.println("<b>Fenwick Library</b>");
+out.println("<br>");
+out.println("  <input type="radio" name="Fenwick" id="one" value="1" /> ");
 out.println("  <label for="one">1</label> ");
 out.println("  <input type="radio" name="Fenwick" id="two" value="2" /> ");
 out.println(" <label for="two">2</label> ");
@@ -192,13 +192,13 @@ out.println("<br>");
 out.println("  <input type="radio" name="RB" id="one" value="1" /> ");
 out.println("  <label for="one">1</label>"); 
 out.println("  <input type="radio" name="RB" id="two" value="2" />");
-out.println(" <label for="two">2</label>");
+out.println("  <label for="two">2</label>");
 out.println("  <input type="radio" name="RB" id="three" value="3" />");
-out.println(" <label for="three">3</label>");
+out.println("  <label for="three">3</label>");
 out.println("  <input type="radio" name="RB" id="four" value="4" />");
-out.println("<label for="four">4</label>");
+out.println("  <label for="four">4</label>");
 out.println("  <input type="radio" name="RB" id="five" value="5" />");
-out.println(" <label for="five">5</label>");
+out.println("  <label for="five">5</label>");
 
 out.println("<br>");
 
@@ -222,13 +222,13 @@ out.println("<br>");
 out.println("  <input type="radio" name="VSE" id="one" value="1" /> ");
 out.println("  <label for="one">1</label> ");
 out.println("  <input type="radio" name="VSE" id="two" value="2" />");
-out.println(" <label for="two">2</label>");
+out.println("  <label for="two">2</label>");
 out.println("  <input type="radio" name="VSE" id="three" value="3" />");
-out.println(" <label for="three">3</label>");
+out.println("  <label for="three">3</label>");
 out.println("  <input type="radio" name="VSE" id="four" value="4" />");
-out.println(" <label for="four">4</label>");
-out.println("out.println("  <input type="radio" name="VSE" id="five" value="5" />");
-out.println(" <label for="five">5</label>");
+out.println("  <label for="four">4</label>");
+out.println("  <input type="radio" name="VSE" id="five" value="5" />");
+out.println("  <label for="five">5</label>");
 out.println("<br>");
 
 out.println("<input type="submit" onclick="displayRadioValue() value="submit""></button>");
