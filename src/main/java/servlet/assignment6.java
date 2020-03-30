@@ -1,9 +1,12 @@
-/** *****************************************************************
-    twoButtons.java   servlet example
+// assignment 6 java Thomas Rigger, Megan Ngo
 
-        @author Jeff Offutt
+/** *****************************************************************
+    assignment6.java   servlet example
+        @author Megan Ngo
+        @author Thomas Rigger
 ********************************************************************* */
 package servlet;
+
 // Import Java Libraries
 import java.io.*;
 import java.util.*;
@@ -12,19 +15,17 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-
-
 import java.io.PrintWriter;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 
 
 @WebServlet(
-        name = "twoButtons", // "MyServlet2",
-        urlPatterns = {"/twoButtons"}
+        name = "assignment6", // "MyServlet2",
+        urlPatterns = {"/assignment6"}
     )
 
-// twoButtons class
+// assignment6 class
 // CONSTRUCTOR: no constructor specified (default)
 //
 // ***************  PUBLIC OPERATIONS  **********************************
@@ -39,12 +40,12 @@ import javax.servlet.annotation.WebServlet;
 // private void PrintTail (PrintWriter out) --> Prints the HTML bottom
 //***********************************************************************
 
-public class twoButtons extends HttpServlet
+public class assignment6 extends HttpServlet
 {
 
-static String Domain ="swe432twobuttons.herokuapp.com";
+static String Domain ="swe432assignment6.herokuapp.com";
 static String Path    = "/";
-static String Servlet = "twoButtons";
+static String Servlet = "assignment6";
 
 // Location of servlet.
 // static String Domain  = "cs.gmu.edu:8443";
@@ -122,7 +123,7 @@ private void PrintHead (PrintWriter out)
    out.println("");
 
    out.println("<head>");
-   out.println("<title>Two buttons example</title>");
+   out.println("<title>Assignment 6</title>");
    out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + Style + "\">");
    out.println("</head>");
    out.println("");
@@ -136,9 +137,9 @@ private void PrintBody (PrintWriter out, String lhs, String rhs, String rslt)
 {
    out.println("<body>");
    out.println("<p>");
-   out.println("Partners: Megan Ngo and Thomas Rigger");
+   out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
    out.println("</p>");
-   out.print  ("<form method=\"post\"");
+   out.println("<form method=\"post\"");
    out.println(" action=\"https://" + Domain + Path + Servlet + "\">");
    out.println("");
    out.println(" <table>");
