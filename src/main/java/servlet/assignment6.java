@@ -262,9 +262,10 @@ public class assignment6 extends HttpServlet {
 		out.println("<br>");
 
 		//out.println("<input type=\"submit\" onclick=\"displayRadioValue() value=\"submit\"\"></button>");
-
-		   out.println("");
-		   out.println("</body>");
+out.println("<input type=\"submit\" onclick=\"displayRadioValue()\" value=\"submit\">");
+	out.println("</form>");
+		out.println("");
+		out.println("</body>");
 	} // End PrintBody
 
 	/**
