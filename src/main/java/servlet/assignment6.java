@@ -84,7 +84,7 @@ public class assignment6 extends HttpServlet {
 		String volgenau = request.getParameter("VSE"); // e
 
 		String dropDown = request.getParameter("School Year");
-		String rslt = "Result: ";
+		String rslt = "Result: " + "\nSchool Year: " + dropDown;
 		// String dropDown = request.getElementById("SchoolYear").value;
 		// rslt += "\nSchool Year: " + dropDown;
 		// rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson +
@@ -266,7 +266,6 @@ public class assignment6 extends HttpServlet {
 		out.println("</form>");
 
 		if (!rslt.equals("")) {
-			out.println("\nYear: " + dropDown);
 
 			out.println("\nFenwick: " + fenwick);
 
