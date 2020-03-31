@@ -63,7 +63,7 @@ public class assignment6 extends HttpServlet {
 	 * by the submit button, and sends the results back to the client.
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Float rslt = new Float(0.0);
+		/* Float rslt = new Float(0.0);
 		Float lhsVal = new Float(0.0);
 		Float rhsVal = new Float(0.0);
 		String operation = request.getParameter("Operation");
@@ -81,7 +81,17 @@ public class assignment6 extends HttpServlet {
 		} else if (operation.equals(OperationMult)) {
 			rslt = new Float(lhsVal.floatValue() * rhsVal.floatValue());
 		}
+		*/
+		String fenwick = request.getParameter("Fenwick"); // a
+		String johnson = request.getParameter("JC"); // b
+		String robinson = request.getParameter("RB"); // c
+		String southside = request.getParameter("Southside"); // d
+		String volgenau = request.getParameter("VSE"); // e
 
+		String rslt = "";
+		// String dropDown = request.getElementById("SchoolYear").value;
+		rslt += "fw: " + fenwick + " jc: " + johnson;
+		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		PrintHead(out);
