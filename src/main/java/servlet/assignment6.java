@@ -94,7 +94,7 @@ public class assignment6 extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		PrintHead(out);
-		PrintBody(out, rslt.toString(), fenwick, johnson, robinson, southside, volgenau);
+		PrintBody(out, rslt.toString(), dropDown, fenwick, johnson, robinson, southside, volgenau);
 		PrintTail(out);
 	} // End doPost
 
@@ -129,7 +129,7 @@ public class assignment6 extends HttpServlet {
 	 * ***************************************************** Prints the <BODY> of
 	 * the HTML page with the form data values from the parameters.
 	 */
-	private void PrintBody(PrintWriter out, String rslt, String fenwick, String johnson, String robinson,
+	private void PrintBody(PrintWriter out, String dropDown, String rslt, String fenwick, String johnson, String robinson,
 			String southside, String volgenau) {
 
 		/*
@@ -295,7 +295,7 @@ public class assignment6 extends HttpServlet {
 	 * (out,lhs,rhs,rslt) to print a page with blanks in the form fields.
 	 */
 	private void PrintBody(PrintWriter out) {
-		PrintBody(out, "", "", "", "", "", "");
+		PrintBody(out, "", "", "", "", "", "", "");
 	}
 
 	/**
