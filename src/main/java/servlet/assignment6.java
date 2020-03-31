@@ -89,7 +89,9 @@ public class assignment6 extends HttpServlet {
 		String volgenau = request.getParameter("VSE"); // e
 
 		String rslt = "";
+		String dropDown = request.getParameter("School Year");
 		// String dropDown = request.getElementById("SchoolYear").value;
+		rslt += dropDown;
 		rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson + "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside  + "\nVolgenau: " + volgenau;
 		
 		response.setContentType("text/html");
