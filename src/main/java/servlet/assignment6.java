@@ -275,8 +275,8 @@ public class assignment6 extends HttpServlet {
 		out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
 		out.println("</form>");
 		
-						out.println("   <td>Result:");
-		out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rslt + "\" size=6>");
+		out.println("Result: ");
+		out.println(rslt);
 		
 		out.println("");
 		out.println("</body>");
