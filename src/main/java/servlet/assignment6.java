@@ -272,7 +272,7 @@ public class assignment6 extends HttpServlet {
 		out.println("<br>");
 
 		//out.println("<input type=\"submit\" onclick=\"displayRadioValue() value=\"submit\"\"></button>");
-		out.println("<input type=\"submit\" onclick=\"displayRadioValue()\" value=\"submit\">");
+		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"submit\">");
 		// out.println("<button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6'>Refresh</button>");
 		/// out.println("     <button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6';\">Refresh</button> 	");		
 		out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
