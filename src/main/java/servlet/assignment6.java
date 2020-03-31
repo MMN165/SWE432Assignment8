@@ -174,15 +174,13 @@ public class assignment6 extends HttpServlet {
 		
 	
 		
-		
-		
-		
-		   out.println("<body>");
-		   out.println("<p>");
-		   out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
-		   out.println("</p>");
-		   out.println("<p><b>Collaboration Summary:</b> Megan made the radio buttons and Thomas made the JavaScript buttons. We both worked debugged.</p>");
-			 out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
+		out.println("<body>");
+   		 out.println("<b>SWE 432: </b> Assignment 6");
+		out.println("<p>");
+		out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
+		out.println("</p>");
+		out.println("<p><b>Collaboration Summary:</b> Megan and Thomas worked together to build and debug doGet, doPost, printBody, and printHead and then commitied it to Heroku. </p>");
+		 out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
 		   out.println("<br>");
 
 			// these three lines are from the original servlet
