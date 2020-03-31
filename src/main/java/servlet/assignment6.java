@@ -179,7 +179,7 @@ public class assignment6 extends HttpServlet {
 		out.println("<p>");
 		out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
 		out.println("</p>");
-		out.println("<p><b>Collaboration Summary:</b> Megan and Thomas worked together to build and debug doGet, doPost, printBody, and printHead and then commitied it to Heroku. </p>");
+		out.println("<p><b>Collaboration Summary:</b> Megan and Thomas worked together to build and debug doGet, doPost, printBody, and printHead and then committed it to Heroku. </p>");
 		 out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
 		   out.println("<br>");
 
@@ -270,12 +270,14 @@ public class assignment6 extends HttpServlet {
 		out.println("  <input type=\"radio\" name=\"VSE\" id=\"five\" value=\"5\" />");
 		out.println("  <label for=\"five\">5</label>");
 		out.println("<br>");
-
+		out.println("<p></p>");
 		//out.println("<input type=\"submit\" onclick=\"displayRadioValue() value=\"submit\"\"></button>");
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
 		// out.println("<button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6'>Refresh</button>");
 		/// out.println("     <button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6';\">Refresh</button> 	");		
 		// out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
+		out.println("<button onclick=\"doPost()\">Refresh</button>");
+		PrintBody(out, "");
 		out.println("</form>");
 		
     		if (!rslt.equals("")) {
