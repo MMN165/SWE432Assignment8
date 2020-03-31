@@ -133,7 +133,7 @@ public class assignment6 extends HttpServlet {
 	private void PrintBody(PrintWriter out,  String rslt) {
 		
 		
-		out.println("<body>");
+		/*out.println("<body>");
 		out.println("<p>");
 		out.println("Partners: Megan Ngo and Thomas Rigger");
 		out.println("</p>");
@@ -162,7 +162,7 @@ public class assignment6 extends HttpServlet {
 		out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
 		out.println("</form>");
 		out.println("");
-		out.println("</body>");
+		out.println("</body>"); */
 		
 		
 		
