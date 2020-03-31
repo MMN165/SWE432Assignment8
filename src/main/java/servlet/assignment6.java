@@ -129,8 +129,8 @@ public class assignment6 extends HttpServlet {
 	 * ***************************************************** Prints the <BODY> of
 	 * the HTML page with the form data values from the parameters.
 	 */
-	private void PrintBody(PrintWriter out, String dropDown, String rslt, String fenwick, String johnson, String robinson,
-			String southside, String volgenau) {
+	private void PrintBody(PrintWriter out, String dropDown, String rslt, String fenwick, String johnson,
+			String robinson, String southside, String volgenau) {
 
 		/*
 		 * out.println("<body>"); out.println("<p>");
@@ -265,27 +265,23 @@ public class assignment6 extends HttpServlet {
 		// Domain + Path + Servlet + \"\\\"\";\">Refresh</button> ");
 		out.println("</form>");
 
-		out.println("\nYear: " + dropDown);
+		if (!rslt.equals("")) {
+			out.println("\nYear: " + dropDown);
 
-		if (!johnson.equals("") || (johnson == null)) {
+			out.println("\nFenwick: " + fenwick);
+
 			out.println("\nJohnson Center: " + johnson);
-		}
 
-		if (!robinson.equals("") || (robinson == null)) {
 			out.println("\nRobinson: " + robinson);
-		}
 
-		if (!southside.equals("") || (southside == null)) {
 			out.println("\nSouthside: " + southside);
-		}
 
-		if (!volgenau.equals("") || (volgenau == null)) {
 			out.println("\nVolgenau: " + volgenau);
-		}
 
-		if (johnson.equals("") || (johnson == null) || robinson.equals("") || (robinson == null) || southside.equals("")
-				|| (southside == null) || volgenau.equals("") || (volgenau == null)) {
-			out.println("Please make a selection for all fields.");
+			if (johnson.equals("") || (johnson == null) || robinson.equals("") || (robinson == null)
+					|| southside.equals("") || (southside == null) || volgenau.equals("") || (volgenau == null)) {
+				out.println("Please make a selection for all fields.");
+			}
 		}
 
 	} // End PrintBody
