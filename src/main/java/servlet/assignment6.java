@@ -275,8 +275,10 @@ public class assignment6 extends HttpServlet {
 		out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
 		out.println("</form>");
 		
-		out.println("Result: ");
-		out.println(rslt);
+    		if (!rslt.equals("")) {
+			out.println("Result: ");
+			out.println(rslt);
+        	}
 		
 		out.println("");
 		out.println("</body>");
