@@ -97,7 +97,7 @@ public class assignment6 extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		PrintHead(out);
-		PrintBody(out, rslt.toString());
+		PrintBody(out, rslt.toString(), fenwick, johnson, robinson, southside, volgenau);
 		PrintTail(out);
 	} // End doPost
 
@@ -132,7 +132,7 @@ public class assignment6 extends HttpServlet {
 	 * ***************************************************** Prints the <BODY> of
 	 * the HTML page with the form data values from the parameters.
 	 */
-	private void PrintBody(PrintWriter out,  String rslt) {
+	private void PrintBody(PrintWriter out,  String rslt, String fenwick,String johnson,String robinson,String southside,String volgenau) {
 		
 		
 		/*out.println("<body>");
@@ -274,7 +274,7 @@ public class assignment6 extends HttpServlet {
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
 		// out.println("<button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6'>Refresh</button>");
 		/// out.println("     <button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6';\">Refresh</button> 	");		
-		out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
+		// out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
 		out.println("</form>");
 		
     		if (!rslt.equals("")) {
@@ -291,7 +291,7 @@ public class assignment6 extends HttpServlet {
 	 * (out,lhs,rhs,rslt) to print a page with blanks in the form fields.
 	 */
 	private void PrintBody(PrintWriter out) {
-		PrintBody(out, "");
+		PrintBody(out, "", "","","","","");
 	}
 
 
