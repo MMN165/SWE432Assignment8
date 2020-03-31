@@ -95,7 +95,7 @@ public class assignment6 extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		PrintHead(out);
-		PrintBody(out, lhsStr, rhsStr, rslt.toString());
+		PrintBody(out, rslt.toString());
 		PrintTail(out);
 	} // End doPost
 
@@ -130,7 +130,7 @@ public class assignment6 extends HttpServlet {
 	 * ***************************************************** Prints the <BODY> of
 	 * the HTML page with the form data values from the parameters.
 	 */
-	private void PrintBody(PrintWriter out, String lhs, String rhs, String rslt) {
+	private void PrintBody(PrintWriter out,  String rslt) {
 		
 		
 		out.println("<body>");
