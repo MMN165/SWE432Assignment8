@@ -87,13 +87,23 @@ public class assignment6 extends HttpServlet {
 		String robinson = request.getParameter("RB"); // c
 		String southside = request.getParameter("Southside"); // d
 		String volgenau = request.getParameter("VSE"); // e
-
-		String rslt = "";
 		String dropDown = request.getParameter("School Year");
-		// String dropDown = request.getElementById("SchoolYear").value;
-		rslt += "\nSchool Year: " + dropDown;
-		rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson + "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside  + "\nVolgenau: " + volgenau;
 		
+		String rslt = "";
+		// String dropDown = request.getElementById("SchoolYear").value;
+		// rslt += "\nSchool Year: " + dropDown;
+		rslt += "\nSchool Year: " + dropDown + "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson + "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside  + "\nVolgenau: " + volgenau;
+
+		
+		// String dropDown = request.getElementById("SchoolYear").value;
+		// rslt += "\nSchool Year: " + dropDown;
+		// rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson + "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside  + "\nVolgenau: " + volgenau;
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		PrintHead(out);
+		PrintBody(out, rslt.toString(), fenwick, johnson, robinson, southside, volgenau);
+		PrintTail(out);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		PrintHead(out);
