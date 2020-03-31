@@ -90,7 +90,7 @@ public class assignment6 extends HttpServlet {
 
 		String rslt = "";
 		// String dropDown = request.getElementById("SchoolYear").value;
-		rslt += "fw: " + fenwick + " jc: " + johnson;
+		rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson + "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside  + "\nVolgenau: " + volgenau;
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
