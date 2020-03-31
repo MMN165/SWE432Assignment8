@@ -63,39 +63,41 @@ public class assignment6 extends HttpServlet {
 	 * by the submit button, and sends the results back to the client.
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * Float rslt = new Float(0.0); Float lhsVal = new Float(0.0); Float rhsVal =
-		 * new Float(0.0); String operation = request.getParameter("Operation"); String
-		 * lhsStr = request.getParameter("LHS"); String rhsStr =
-		 * request.getParameter("RHS"); if ((lhsStr != null) && (lhsStr.length() > 0))
-		 * lhsVal = new Float(lhsStr); if ((rhsStr != null) && (rhsStr.length() > 0))
-		 * rhsVal = new Float(rhsStr);
-		 * 
-		 * if (operation.equals(OperationAdd)) { rslt = new Float(lhsVal.floatValue() +
-		 * rhsVal.floatValue()); } else if (operation.equals(OperationSub)) { rslt = new
-		 * Float(lhsVal.floatValue() - rhsVal.floatValue()); } else if
-		 * (operation.equals(OperationMult)) { rslt = new Float(lhsVal.floatValue() *
-		 * rhsVal.floatValue()); }
-		 */
+		/* Float rslt = new Float(0.0);
+		Float lhsVal = new Float(0.0);
+		Float rhsVal = new Float(0.0);
+		String operation = request.getParameter("Operation");
+		String lhsStr = request.getParameter("LHS");
+		String rhsStr = request.getParameter("RHS");
+		if ((lhsStr != null) && (lhsStr.length() > 0))
+			lhsVal = new Float(lhsStr);
+		if ((rhsStr != null) && (rhsStr.length() > 0))
+			rhsVal = new Float(rhsStr);
+
+		if (operation.equals(OperationAdd)) {
+			rslt = new Float(lhsVal.floatValue() + rhsVal.floatValue());
+		} else if (operation.equals(OperationSub)) {
+			rslt = new Float(lhsVal.floatValue() - rhsVal.floatValue());
+		} else if (operation.equals(OperationMult)) {
+			rslt = new Float(lhsVal.floatValue() * rhsVal.floatValue());
+		}
+		*/
 		String fenwick = request.getParameter("Fenwick"); // a
 		String johnson = request.getParameter("JC"); // b
 		String robinson = request.getParameter("RB"); // c
 		String southside = request.getParameter("Southside"); // d
 		String volgenau = request.getParameter("VSE"); // e
 
-		String dropDown = request.getParameter("School Year");
 		String rslt = "";
-		rslt += "Result: \nSchool Year: " + dropDown;
+		String dropDown = request.getParameter("School Year");
 		// String dropDown = request.getElementById("SchoolYear").value;
-		// rslt += "\nSchool Year: " + dropDown;
-		// rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson +
-		// "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside + "\nVolgenau:
-		// " + volgenau;
-
+		rslt += "\nSchool Year: " + dropDown;
+		rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson + "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside  + "\nVolgenau: " + volgenau;
+		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		PrintHead(out);
-		PrintBody(out, rslt.toString(), dropDown, fenwick, johnson, robinson, southside, volgenau);
+		PrintBody(out, rslt.toString(), fenwick, johnson, robinson, southside, volgenau);
 		PrintTail(out);
 	} // End doPost
 
@@ -130,59 +132,72 @@ public class assignment6 extends HttpServlet {
 	 * ***************************************************** Prints the <BODY> of
 	 * the HTML page with the form data values from the parameters.
 	 */
-	private void PrintBody(PrintWriter out, String dropDown, String rslt, String fenwick, String johnson,
-			String robinson, String southside, String volgenau) {
-
-		/*
-		 * out.println("<body>"); out.println("<p>");
-		 * out.println("Partners: Megan Ngo and Thomas Rigger"); out.println("</p>");
-		 * out.print("<form method=\"post\""); out.println(" action=\"https://" + Domain
-		 * + Path + Servlet + "\">"); out.println(""); out.println(" <table>");
-		 * out.println("  <tr>"); out.println("   <td>First value:");
-		 * out.println("   <td><input type=\"text\" name=\"LHS\" value=\"" + lhs +
-		 * "\" size=5>"); out.println("  </tr>"); out.println("  <tr>");
-		 * out.println("   <td>Second value:");
-		 * out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rhs +
-		 * "\" size=5>"); out.println("  </tr>"); out.println("  <tr>");
-		 * out.println("   <td>Result:");
-		 * out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rslt +
-		 * "\" size=6>"); out.println("  </tr>"); out.println(" </table>");
-		 * out.println(" <br>"); out.println(" <br>");
-		 * out.println(" <input type=\"submit\" value=\"" + OperationAdd +
-		 * "\" name=\"Operation\">"); out.println(" <input type=\"submit\" value=\"" +
-		 * OperationSub + "\" name=\"Operation\">");
-		 * out.println(" <input type=\"submit\" value=\"" + OperationMult +
-		 * "\" name=\"Operation\">");
-		 * out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
-		 * out.println("</form>"); out.println(""); out.println("</body>");
-		 */
-
-		out.println("<body>");
+	private void PrintBody(PrintWriter out,  String rslt, String fenwick,String johnson,String robinson,String southside,String volgenau) {
+		
+		
+		/*out.println("<body>");
 		out.println("<p>");
-		out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
+		out.println("Partners: Megan Ngo and Thomas Rigger");
 		out.println("</p>");
-		out.println(
-				"<p><b>Collaboration Summary:</b> Megan made the radio buttons and Thomas made the JavaScript buttons. We both worked debugged.</p>");
-		out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
-		out.println("<br>");
-
-		// these three lines are from the original servlet
-		out.println("<form method=\"post\"");
+		out.print("<form method=\"post\"");
 		out.println(" action=\"https://" + Domain + Path + Servlet + "\">");
 		out.println("");
+		out.println(" <table>");
+		out.println("  <tr>");
+		out.println("   <td>First value:");
+		out.println("   <td><input type=\"text\" name=\"LHS\" value=\"" + lhs + "\" size=5>");
+		out.println("  </tr>");
+		out.println("  <tr>");
+		out.println("   <td>Second value:");
+		out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rhs + "\" size=5>");
+		out.println("  </tr>");
+		out.println("  <tr>");
+		out.println("   <td>Result:");
+		out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rslt + "\" size=6>");
+		out.println("  </tr>");
+		out.println(" </table>");
+		out.println(" <br>");
+		out.println(" <br>");
+		out.println(" <input type=\"submit\" value=\"" + OperationAdd + "\" name=\"Operation\">");
+		out.println(" <input type=\"submit\" value=\"" + OperationSub + "\" name=\"Operation\">");
+		out.println(" <input type=\"submit\" value=\"" + OperationMult + "\" name=\"Operation\">");
+		out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
+		out.println("</form>");
+		out.println("");
+		out.println("</body>"); */
+		
+		
+		
+		
+	
+		
+		
+		
+		
+		   out.println("<body>");
+		   out.println("<p>");
+		   out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
+		   out.println("</p>");
+		   out.println("<p><b>Collaboration Summary:</b> Megan made the radio buttons and Thomas made the JavaScript buttons. We both worked debugged.</p>");
+			 out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
+		   out.println("<br>");
 
-		out.println("What year are you?");
-		out.println("  <select name= \"School Year\">");
-		out.println("  <option value= \"Freshman\" selected=\"selected\">Freshman</option>");
-		out.println("  <option value=\"Sophomore\">Sophomore</option>");
-		out.println("  <option value=\"Junior\">Junior</option>");
-		out.println(" <option value=\"Senior\">Senior</option>");
-		out.println("</select>");
+			// these three lines are from the original servlet
+		   out.println("<form method=\"post\"");
+		   out.println(" action=\"https://" + Domain + Path + Servlet + "\">");
+		   out.println("");
+		   
+		out.println("What year are you?");         
+		out.println("  <select name= \"School Year\">"); 
+		out.println("  <option value= \"Freshman\" selected=\"selected\">Freshman</option>"); 
+		out.println("  <option value=\"Sophomore\">Sophomore</option>"); 
+		out.println("  <option value=\"Junior\">Junior</option>"); 
+		out.println(" <option value=\"Senior\">Senior</option>"); 
+		out.println("</select>"); 
 
-		out.println(
-				"<br> <br> Please rate the following GMU buildings on a scale of 1 (worst) to 5 (best): <br> <br> ");
+		out.println("<br> <br> Please rate the following GMU buildings on a scale of 1 (worst) to 5 (best): <br> <br> ");
 
-		out.println("<b>Fenwick Library</b>");
+		out.println("<b>Fenwick Library</b>");    
 		out.println("<br>");
 		out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"one\" value=\"1\" /> ");
 		out.println("  <label for=\"one\">1</label> ");
@@ -198,8 +213,8 @@ public class assignment6 extends HttpServlet {
 		out.println("<br> ");
 		out.println("<b>Johnson Center</b>");
 		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\"JC\" id=\"one\" value=\"1\" />");
-		out.println("  <label for=\"one\">1</label>");
+		out.println("  <input type=\"radio\" name=\"JC\" id=\"one\" value=\"1\" />"); 
+		out.println("  <label for=\"one\">1</label>"); 
 		out.println("  <input type=\"radio\" name=\"JC\" id=\"two\" value=\"2\" />");
 		out.println("  <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\"JC\" id=\"three\" value=\"3\" />");
@@ -214,7 +229,7 @@ public class assignment6 extends HttpServlet {
 		out.println("<b>Robinson Hall B</b>");
 		out.println("<br>");
 		out.println("  <input type=\"radio\" name=\"RB\" id=\"one\" value=\"1\" /> ");
-		out.println("  <label for=\"one\">1</label>");
+		out.println("  <label for=\"one\">1</label>"); 
 		out.println("  <input type=\"radio\" name=\"RB\" id=\"two\" value=\"2\" />");
 		out.println("  <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\"RB\" id=\"three\" value=\"3\" />");
@@ -228,8 +243,8 @@ public class assignment6 extends HttpServlet {
 
 		out.println("<b>Southside</b>");
 		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\"Southside\" id=\"one\" value=\"1\" />");
-		out.println("  <label for=\"one\">1</label>");
+		out.println("  <input type=\"radio\" name=\"Southside\" id=\"one\" value=\"1\" />"); 
+		out.println("  <label for=\"one\">1</label>"); 
 		out.println("  <input type=\"radio\" name=\"Southside\" id=\"two\" value=\"2\" />");
 		out.println(" <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\"Southside\" id=\"three\" value=\"3\" /");
@@ -255,35 +270,20 @@ public class assignment6 extends HttpServlet {
 		out.println("  <label for=\"five\">5</label>");
 		out.println("<br>");
 
-		// out.println("<input type=\"submit\" onclick=\"displayRadioValue()
-		// value=\"submit\"\"></button>");
+		//out.println("<input type=\"submit\" onclick=\"displayRadioValue() value=\"submit\"\"></button>");
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
-		// out.println("<button onclick=\"window.location.href =
-		// 'https://swe432assignment6.herokuapp.com/assignment6'>Refresh</button>");
-		/// out.println(" <button onclick=\"window.location.href =
-		// 'https://swe432assignment6.herokuapp.com/assignment6';\">Refresh</button> ");
-		// out.println(" <button onclick=\"window.location.href = \\\"https://\" +
-		// Domain + Path + Servlet + \"\\\"\";\">Refresh</button> ");
+		// out.println("<button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6'>Refresh</button>");
+		/// out.println("     <button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6';\">Refresh</button> 	");		
+		// out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
 		out.println("</form>");
-
-		if (!rslt.equals("")) {
-
-			out.println("\nFenwick: " + fenwick);
-
-			out.println("\nJohnson Center: " + johnson);
-
-			out.println("\nRobinson: " + robinson);
-
-			out.println("\nSouthside: " + southside);
-
-			out.println("\nVolgenau: " + volgenau);
-
-			if (johnson.equals("") || (johnson == null) || robinson.equals("") || (robinson == null)
-					|| southside.equals("") || (southside == null) || volgenau.equals("") || (volgenau == null)) {
-				out.println("Please make a selection for all fields.");
-			}
-		}
-
+		
+    		if (!rslt.equals("")) {
+			out.println("Result: ");
+			out.println(rslt);
+        	}
+		
+		out.println("");
+		out.println("</body>");
 	} // End PrintBody
 
 	/**
@@ -291,8 +291,9 @@ public class assignment6 extends HttpServlet {
 	 * (out,lhs,rhs,rslt) to print a page with blanks in the form fields.
 	 */
 	private void PrintBody(PrintWriter out) {
-		PrintBody(out, "", "", "", "", "", "", "");
+		PrintBody(out, "", fenwick, johnson, robinson, southside, volgenau);
 	}
+
 
 	/**
 	 * ***************************************************** Prints the bottom of
