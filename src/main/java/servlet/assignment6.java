@@ -42,12 +42,7 @@ public class assignment6 extends HttpServlet {
 	static String Domain = "swe432assignment6.herokuapp.com";
 	static String Path = "/";
 	static String Servlet = "assignment6";
-
-// Location of servlet.
-// static String Domain  = "cs.gmu.edu:8443";
-// static String Path    = "/offutt/servlet/";
-// static String Servlet = "assignment6";
-
+	
 // Button labels
 	static String OperationAdd = "Add";
 	static String OperationSub = "Subtract";
@@ -62,24 +57,7 @@ public class assignment6 extends HttpServlet {
 	 * by the submit button, and sends the results back to the client.
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* Float rslt = new Float(0.0);
-		Float lhsVal = new Float(0.0);
-		Float rhsVal = new Float(0.0);
-		String operation = request.getParameter("Operation");
-		String lhsStr = request.getParameter("LHS");
-		String rhsStr = request.getParameter("RHS");
-		if ((lhsStr != null) && (lhsStr.length() > 0))
-			lhsVal = new Float(lhsStr);
-		if ((rhsStr != null) && (rhsStr.length() > 0))
-			rhsVal = new Float(rhsStr);
-		if (operation.equals(OperationAdd)) {
-			rslt = new Float(lhsVal.floatValue() + rhsVal.floatValue());
-		} else if (operation.equals(OperationSub)) {
-			rslt = new Float(lhsVal.floatValue() - rhsVal.floatValue());
-		} else if (operation.equals(OperationMult)) {
-			rslt = new Float(lhsVal.floatValue() * rhsVal.floatValue());
-		}
-		*/
+
 		String fenwick = request.getParameter("Fenwick"); // a
 		String johnson = request.getParameter("JC"); // b
 		String robinson = request.getParameter("RB"); // c
@@ -88,15 +66,8 @@ public class assignment6 extends HttpServlet {
 		String dropDown = request.getParameter("School Year");
 		
 		String rslt = "";
-		// String dropDown = request.getElementById("SchoolYear").value;
-		// rslt += "\nSchool Year: " + dropDown;
 		rslt += "\nSchool Year: " + dropDown + " ||| Fenwick: " + fenwick + " ||| Johnson Center: " + johnson + " ||| Robinson Hall B: " + robinson + " ||| Southside: " + southside  + " ||| Volgenau: " + volgenau;
 
-		
-		// String dropDown = request.getElementById("SchoolYear").value;
-		// rslt += "\nSchool Year: " + dropDown;
-		// rslt += "\nFenwick: " + fenwick + "\nJohnson Center: " + johnson + "\nRobinson Hall B: " + robinson + "\nSouthside: " + southside  + "\nVolgenau: " + volgenau;
-		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		PrintHead(out);
@@ -136,44 +107,7 @@ public class assignment6 extends HttpServlet {
 	 * the HTML page with the form data values from the parameters.
 	 */
 	private void PrintBody(PrintWriter out,  String rslt) {
-		
-		
-		/*out.println("<body>");
-		out.println("<p>");
-		out.println("Partners: Megan Ngo and Thomas Rigger");
-		out.println("</p>");
-		out.print("<form method=\"post\"");
-		out.println(" action=\"https://" + Domain + Path + Servlet + "\">");
-		out.println("");
-		out.println(" <table>");
-		out.println("  <tr>");
-		out.println("   <td>First value:");
-		out.println("   <td><input type=\"text\" name=\"LHS\" value=\"" + lhs + "\" size=5>");
-		out.println("  </tr>");
-		out.println("  <tr>");
-		out.println("   <td>Second value:");
-		out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rhs + "\" size=5>");
-		out.println("  </tr>");
-		out.println("  <tr>");
-		out.println("   <td>Result:");
-		out.println("   <td><input type=\"text\" name=\"RHS\" value=\"" + rslt + "\" size=6>");
-		out.println("  </tr>");
-		out.println(" </table>");
-		out.println(" <br>");
-		out.println(" <br>");
-		out.println(" <input type=\"submit\" value=\"" + OperationAdd + "\" name=\"Operation\">");
-		out.println(" <input type=\"submit\" value=\"" + OperationSub + "\" name=\"Operation\">");
-		out.println(" <input type=\"submit\" value=\"" + OperationMult + "\" name=\"Operation\">");
-		out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
-		out.println("</form>");
-		out.println("");
-		out.println("</body>"); */
-		
-		
-		
-		
 	
-		
 		out.println("<body>");
    		 out.println("<b>SWE 432: </b> Assignment 6");
 		out.println("<p>");
@@ -271,13 +205,8 @@ public class assignment6 extends HttpServlet {
 		out.println("  <label for=\"five\">5</label>");
 		out.println("<br>");
 		out.println("<p></p>");
-		//out.println("<input type=\"submit\" onclick=\"displayRadioValue() value=\"submit\"\"></button>");
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
-		// out.println("<button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6'>Refresh</button>");
-		/// out.println("     <button onclick=\"window.location.href = 'https://swe432assignment6.herokuapp.com/assignment6';\">Refresh</button> 	");		
-		// out.println("     <button onclick=\"window.location.href = \\\"https://\" + Domain + Path + Servlet + \"\\\"\";\">Refresh</button> 	");
-		// out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Refresh\">"
-		
+
 		out.println("</form>");
 		
     		if (!rslt.equals("")) {
