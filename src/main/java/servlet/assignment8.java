@@ -36,7 +36,7 @@ public class assignment8 extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	static String Domain = "swe432-assignment8.herokuapp.com";
+	static String Domain = "";
 	static String Path = "/";
 	static String Servlet = "assignment8";
 	
