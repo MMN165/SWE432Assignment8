@@ -126,12 +126,13 @@ public class assignment8 extends HttpServlet {
   private void PrintResponseBody (PrintWriter out, String resourcePath){
     out.println("<body onLoad=\"setFocus()\">");
     out.println("<p>");
-    out.println("A simple example that demonstrates how to persist data to a file");
+    out.println("Results Database");
     out.println("</p>");
     out.println("");
     out.println(" <table>");
 
     try {
+	 out.println("  <table>");
         out.println("  <tr>");
         out.println("   <th>Name</th>");
 	out.println("   <th>Year</th>");
