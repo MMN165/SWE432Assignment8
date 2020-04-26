@@ -244,7 +244,7 @@ public class assignment8 extends HttpServlet {
     		 out.println("<p>   (1 point) - Filter unacceptable words from the reviews. </p>");
     		 out.println("<p>   (1 point) - Add use of a session object—you choose what to use it for. </p>");
 		out.println("</p>");
-		
+		out.println("<br>");
 		out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
 		   out.println("<br>");
      out.println("</p>");
@@ -358,15 +358,17 @@ public class assignment8 extends HttpServlet {
 		
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
 
-		out.println("</form>");
+	/*	out.println("</form>");
 
 		     out.println(" <input type=\"submit\" value=\"" + OperationAdd
       + "\" name=\"Operation\">");
      out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
-     out.println("</form>");
+     out.println("</form>"); */
      out.println("");
      out.println("</body>");
-
+		out.println("<br>");
+		out.println("<br>");
+		out.println("<br>");
 		out.println("</form>");
 		
 	
