@@ -33,7 +33,7 @@ import javax.servlet.annotation.WebServlet;
 // private void PrintTail (PrintWriter out) --> Prints the HTML bottom
 //***********************************************************************
 
-public class assignment6 extends HttpServlet {
+public class assignment8 extends HttpServlet {
 
 	/**
 	 * 
