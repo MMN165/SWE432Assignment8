@@ -231,9 +231,7 @@ public class assignment8 extends HttpServlet {
 
      if(error != null && error.length() > 0){
        out.println("<p style=\"color:red;\">Please correct the following and resubmit.</p>");
-       out.println("<ol>");
        out.println(error);
-       out.println("</ol>");
      }
 		
 		  out.print  ("<form name=\"persist2file\" method=\"post\"");
@@ -273,6 +271,69 @@ public class assignment8 extends HttpServlet {
 		out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"five\" value=\"5\" />");
 		out.println(" <label for=\"five\">5</label>");
 
+		out.println("<br> ");
+		out.println("<b>Johnson Center</b>");
+		out.println("<br>");
+		out.println("  <input type=\"radio\" name=\"JC\" id=\"one\" value=\"1\" />"); 
+		out.println("  <label for=\"one\">1</label>"); 
+		out.println("  <input type=\"radio\" name=\"JC\" id=\"two\" value=\"2\" />");
+		out.println("  <label for=\"two\">2</label>");
+		out.println("  <input type=\"radio\" name=\"JC\" id=\"three\" value=\"3\" />");
+		out.println("  <label for=\"three\">3</label>");
+		out.println("  <input type=\"radio\" name=\"JC\" id=\"four\" value=\"4\" />");
+		out.println("  <label for=\"four\">4</label>");
+		out.println("  <input type=\"radio\" name=\"JC\" id=\"five\" value=\"5\" />");
+		out.println("  <label for=\"five\">5</label>");
+
+		out.println("<br>");
+
+		out.println("<b>Robinson Hall B</b>");
+		out.println("<br>");
+		out.println("  <input type=\"radio\" name=\"RB\" id=\"one\" value=\"1\" /> ");
+		out.println("  <label for=\"one\">1</label>"); 
+		out.println("  <input type=\"radio\" name=\"RB\" id=\"two\" value=\"2\" />");
+		out.println("  <label for=\"two\">2</label>");
+		out.println("  <input type=\"radio\" name=\"RB\" id=\"three\" value=\"3\" />");
+		out.println("  <label for=\"three\">3</label>");
+		out.println("  <input type=\"radio\" name=\"RB\" id=\"four\" value=\"4\" />");
+		out.println("  <label for=\"four\">4</label>");
+		out.println("  <input type=\"radio\" name=\"RB\" id=\"five\" value=\"5\" />");
+		out.println("  <label for=\"five\">5</label>");
+
+		out.println("<br>");
+
+		out.println("<b>Southside</b>");
+		out.println("<br>");
+		out.println("  <input type=\"radio\" name=\"Southside\" id=\"one\" value=\"1\" />"); 
+		out.println("  <label for=\"one\">1</label>"); 
+		out.println("  <input type=\"radio\" name=\"Southside\" id=\"two\" value=\"2\" />");
+		out.println(" <label for=\"two\">2</label>");
+		out.println("  <input type=\"radio\" name=\"Southside\" id=\"three\" value=\"3\" /");
+		out.println(" <label for=\"three\">3</label>");
+		out.println("  <input type=\"radio\" name=\"Southside\" id=\"four\" value=\"4\" />");
+		out.println(" <label for=\"four\">4</label>");
+		out.println("  <input type=\"radio\" name=\"Southside\" id=\"five\" value=\"5\" />");
+		out.println(" <label for=\"five\">5</label>");
+
+		out.println("<br>");
+
+		out.println("<b>Volgenau School of Engineering</b>");
+		out.println("<br>");
+		out.println("  <input type=\"radio\" name=\"VSE\" id=\"one\" value=\"1\" /> ");
+		out.println("  <label for=\"one\">1</label> ");
+		out.println("  <input type=\"radio\" name=\"VSE\" id=\"two\" value=\"2\" />");
+		out.println("  <label for=\"two\">2</label>");
+		out.println("  <input type=\"radio\" name=\"VSE\" id=\"three\" value=\"3\" />");
+		out.println("  <label for=\"three\">3</label>");
+		out.println("  <input type=\"radio\" name=\"VSE\" id=\"four\" value=\"4\" />");
+		out.println("  <label for=\"four\">4</label>");
+		out.println("  <input type=\"radio\" name=\"VSE\" id=\"five\" value=\"5\" />");
+		out.println("  <label for=\"five\">5</label>");
+		out.println("<br>");
+		out.println("<p></p>");
+		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
+
+		out.println("</form>");
 
 		     out.println(" <input type=\"submit\" value=\"" + OperationAdd
       + "\" name=\"Operation\">");
