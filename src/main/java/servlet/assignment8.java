@@ -250,7 +250,7 @@ public class assignment8 extends HttpServlet {
 		 out.println(" </table>");
 		   
 		out.println("What year are you?");         
-		out.println("  <select name=\""+Data.YEAR.name() +"\" value=\""+year+"\" size=30 required>");
+		out.println("  <select name=\""+Data.YEAR.name() +"\" value=\""+year+"\">");//size=30 required>");
 			    // name= \"School Year\">"); 
 		out.println("  <option value= \"Freshman\" selected=\"selected\">Freshman</option>"); 
 		out.println("  <option value=\"Sophomore\">Sophomore</option>"); 
