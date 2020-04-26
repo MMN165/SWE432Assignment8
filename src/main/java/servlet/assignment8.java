@@ -106,7 +106,7 @@ public class assignment8 extends HttpServlet {
 
      if (error.length() == 0){
        PrintWriter entriesPrintWriter = new PrintWriter(new FileWriter(RESOURCE_FILE, true), true);
-       entriesPrintWriter.println(name+VALUE_SEPARATOR+year+VALUE_SEPARATOR+jc+VALUE_SEPARATOR+fw+VALUE_SEPARATOR+rb+VALUE_SEPARATOR+ss+VALUE_SEPARATOR+fw);
+       entriesPrintWriter.println(name+VALUE_SEPARATOR+year+VALUE_SEPARATOR+jc+VALUE_SEPARATOR+fw+VALUE_SEPARATOR+rb+VALUE_SEPARATOR+ss+VALUE_SEPARATOR+vse);
        entriesPrintWriter.close();
 
        PrintHead(out);
