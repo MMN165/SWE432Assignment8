@@ -274,7 +274,12 @@ public class assignment8 extends HttpServlet {
 		out.println(" <label for=\"five\">5</label>");
 
 
-		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
+		     out.println(" <input type=\"submit\" value=\"" + OperationAdd
+      + "\" name=\"Operation\">");
+     out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
+     out.println("</form>");
+     out.println("");
+     out.println("</body>");
 
 		out.println("</form>");
 		
