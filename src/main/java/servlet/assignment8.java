@@ -70,6 +70,38 @@ public class assignment8 extends HttpServlet {
 		PrintHead(out);
 		PrintBody(out, rslt.toString());
 		PrintTail(out);
+		
+		
+		   HttpSession session = request.getSession();
+   String name   = request.getParameter("attrib_name");
+   String value  = request.getParameter("attrib_value");
+   String remove = request.getParameter("attrib_remove");
+
+      String action = request.getParameter("action");
+
+   if (action != null && action.equals("invalidate"))
+   {  // Called from the invalidate button, kill the session.
+      // Get session object
+      session.invalidate();
+
+      response.setContentType("text/html");
+
+      out.println("<html>");
+      out.println("<head>");
+      out.println(" <title>Session lifecycle</title>");
+      out.println("</head>");
+      out.println("");
+      out.println("<body>");
+
+      out.println("<p>Your session has been invalidated.</P>");
+      }
+	
+		
+		   
+            String lifeCycleURL = "/assignment8"; // --------------------------------------------
+      out.print  ("<br><br><a href=\"" + lifeCycleURL + "?action=invalidate\">");
+      out.println("Invalidate the session</a>");
+       out.println("<br>");
 	} // End doPost
 
 	/**
