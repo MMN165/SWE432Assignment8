@@ -129,9 +129,9 @@ public class assignment8 extends HttpServlet {
     out.println("Results Database");
     out.println("</p>");
     out.println("");
-    out.println(" <table>");
 	  
- out.println(" <style> able, th, td { border: 1px solid black; } </style> ");
+	out.println(" <style> able, th, td { border: 1px solid black; } </style> ");
+    out.println(" <table>");
 	
     try {
 	 out.println("  <table>");
