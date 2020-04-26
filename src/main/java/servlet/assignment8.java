@@ -266,9 +266,9 @@ public class assignment8 extends HttpServlet {
 		out.println("  <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"three\" value=\"3\" />");
 		out.println("  <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\ "name=\""+Data.JC.name() +"\" id=\"four\" value=\"4\" />");
+		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"four\" value=\"4\" />");
 		out.println("  <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\ "name=\""+Data.JC.name() +"\" id=\"five\" value=\"5\" />");
+		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"five\" value=\"5\" />");
 		out.println("  <label for=\"five\">5</label>");
 
 		out.println("<br> ");
