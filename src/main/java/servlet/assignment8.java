@@ -242,11 +242,10 @@ public class assignment8 extends HttpServlet {
     		 out.println("<p>   (1 point) - Store the data in XML format. </p>");
     		 out.println("<p>   (2 points) - Store the data into a database. ");
     		 out.println("<p>   (1 point) - Filter unacceptable words from the reviews. </p>");
-    		 out.println("<p>   (1 point) - Add use of a session object—you choose what to use it for. </p>");
+    		 out.println("<p>   (1 point) - Add use of a session object (invalidate) </p>");
 		out.println("</p>");
 		out.println("<br>");
 		out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
-		   out.println("<br>");
      out.println("</p>");
 
      if(error != null && error.length() > 0){
