@@ -134,6 +134,12 @@ public class assignment8 extends HttpServlet {
     try {
         out.println("  <tr>");
         out.println("   <th>Name</th>");
+	out.println("   <th>Year</th>");
+        out.println("   <th>JC</th>");
+	out.println("   <th>FW</th>");
+	out.println("   <th>RB</th>");
+	out.println("   <th>SS</th>");
+	out.println("   <th>VSE</th>");
         out.println("  </tr>");
         File file = new File(resourcePath);
         if(!file.exists()){
@@ -335,6 +341,7 @@ public class assignment8 extends HttpServlet {
 		out.println("  <label for=\"five\">5</label>");
 		out.println("<br>");
 		out.println("<p></p>");
+		
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
 
 		out.println("</form>");
