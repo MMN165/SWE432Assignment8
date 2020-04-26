@@ -262,7 +262,7 @@ public class assignment8 extends HttpServlet {
 		// out.println("  <input type=\"radio\" name=\"JC\" id=\"one\" value=\"1\" />"); 
 		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"one\" value=\"1\">;");
 		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\"JC\" id=\"two\" value=\"2\" />");
+		out.println("  <input type=\"radio\" name=\"JC\" id=\"two\" value=\"2\" checked=\"true\" />");
 		out.println("  <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\"JC\" id=\"three\" value=\"3\" />");
 		out.println("  <label for=\"three\">3</label>");
@@ -277,7 +277,7 @@ public class assignment8 extends HttpServlet {
 		out.println("  <input type=\"radio\" name=\""+Data.FW.name() +"\" id=\"one\" value=\"1\">;");
 		// out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"one\" value=\"1\" /> ");
 		out.println("  <label for=\"one\">1</label> ");
-		out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"two\" value=\"2\" /> ");
+		out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"two\" value=\"2\" checked=\"true\" /> ");
 		out.println(" <label for=\"two\">2</label> ");
 		out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"three\" value=\"3\" /> ");
 		out.println(" <label for=\"three\">3</label> ");
@@ -293,7 +293,7 @@ public class assignment8 extends HttpServlet {
 		// out.println("  <input type=\"radio\" name=\"RB\" id=\"one\" value=\"1\" /> ");
 		out.println("  <input type=\"radio\" name=\""+Data.RB.name() +"\" id=\"one\" value=\"1\">;");
 		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\"RB\" id=\"two\" value=\"2\" />");
+		out.println("  <input type=\"radio\" name=\"RB\" id=\"two\" value=\"2\" checked=\"true\" />");
 		out.println("  <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\"RB\" id=\"three\" value=\"3\" />");
 		out.println("  <label for=\"three\">3</label>");
@@ -309,7 +309,7 @@ public class assignment8 extends HttpServlet {
 		out.println("  <input type=\"radio\" name=\""+Data.SS.name() +"\" id=\"one\" value=\"1\">;");
 		// out.println("  <input type=\"radio\" name=\"Southside\" id=\"one\" value=\"1\" />"); 
 		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\"Southside\" id=\"two\" value=\"2\" />");
+		out.println("  <input type=\"radio\" name=\"Southside\" id=\"two\" value=\"2\" checked=\"true\" />");
 		out.println(" <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\"Southside\" id=\"three\" value=\"3\" /");
 		out.println(" <label for=\"three\">3</label>");
@@ -325,7 +325,7 @@ public class assignment8 extends HttpServlet {
 		out.println("  <input type=\"radio\" name=\""+Data.VSE.name() +"\" id=\"one\" value=\"1\">;");
 		// out.println("  <input type=\"radio\" name=\"VSE\" id=\"one\" value=\"1\" /> ");
 		out.println("  <label for=\"one\">1</label> ");
-		out.println("  <input type=\"radio\" name=\"VSE\" id=\"two\" value=\"2\" />");
+		out.println("  <input type=\"radio\" name=\"VSE\" id=\"two\" value=\"2\" checked=\"true\" />");
 		out.println("  <label for=\"two\">2</label>");
 		out.println("  <input type=\"radio\" name=\"VSE\" id=\"three\" value=\"3\" />");
 		out.println("  <label for=\"three\">3</label>");
