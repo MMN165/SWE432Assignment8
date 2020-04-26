@@ -319,7 +319,7 @@ public class assignment8 extends HttpServlet {
 	 * (out,lhs,rhs,rslt) to print a page with blanks in the form fields.
 	 */
 	private void PrintBody(PrintWriter out) {
-		PrintBody(out, "");
+		PrintBody(out, "", null, null, null, null, null, null, null);
 	}
 
 
