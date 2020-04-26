@@ -102,7 +102,6 @@ public class assignment8 extends HttpServlet {
       session.invalidate();
 
       response.setContentType("text/html");
-      PrintWriter out = response.getWriter();
 
       out.println("<html>");
       out.println("<head>");
@@ -115,6 +114,11 @@ public class assignment8 extends HttpServlet {
       }
 	
 		
+		   
+            String lifeCycleURL = "/assignment8"; // --------------------------------------------
+      out.print  ("<br><br><a href=\"" + lifeCycleURL + "?action=invalidate\">");
+      out.println("Invalidate the session</a>");
+       out.println("<br>");
 	} // End doGet
 
 	/**
