@@ -15,8 +15,8 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "assignment6", // "MyServlet2",
-		urlPatterns = { "/assignment6" })
+@WebServlet(name = "assignment8", // "MyServlet2",
+		urlPatterns = { "/assignment8" })
 
 // assignment6 class
 // CONSTRUCTOR: no constructor specified (default)
@@ -39,9 +39,9 @@ public class assignment6 extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	static String Domain = "swe432assignment6.herokuapp.com";
+	static String Domain = "swe432-assignment8.herokuapp.com";
 	static String Path = "/";
-	static String Servlet = "assignment6";
+	static String Servlet = "assignment8";
 	
 // Button labels
 	static String OperationAdd = "Add";
