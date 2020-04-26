@@ -47,6 +47,11 @@ public class assignment8 extends HttpServlet {
 
 // Other strings.
 	static String Style = "https://www.cs.gmu.edu/~offutt/classes/432/432-style.css";
+	
+	
+	  static enum Data {NAME, YEAR, JC, FW, RB, SS, VSE};
+  static String RESOURCE_FILE = "entries.txt";
+  static final String VALUE_SEPARATOR = ";";
 
 	/**
 	 * ***************************************************** Overrides HttpServlet's
@@ -55,54 +60,65 @@ public class assignment8 extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String fenwick = request.getParameter("Fenwick"); // a
-		String johnson = request.getParameter("JC"); // b
-		String robinson = request.getParameter("RB"); // c
-		String southside = request.getParameter("Southside"); // d
-		String volgenau = request.getParameter("VSE"); // e
-		String dropDown = request.getParameter("School Year");
+		String name = request.getParameter(Data.NAME.name());
+     		String year = request.getParameter(Data.YEAR.name());
+		String jc = request.getParameter(Data.JC.name());
+		String fw = request.getParameter(Data.FW.name());
+		String rb = request.getParameter(Data.RB.name());
+		String ss = request.getParameter(Data.SS.name());
+		String vse = request.getParameter(Data.VSE.name());
+     
+     String error = "";
+     if(name == null){
+       error= "<li>Name is required</li>";
+       name = "";
+     }
+
+     if(year == null){
+       error+= "<li>Year is required.<li>";
+       year = "";
+       
+     }
+     if(jc == null){
+    	 error+= "<li>JC is required.<li>";
+    	 jc = "";
+     }
+     if(fw == null){
+    	 error+= "<li>FW is required.<li>";
+    	 fw = "";
+     }
+	if(rb == null){
+    	 error+= "<li>RB is required.<li>";
+    	 rb = "";
+     }
+	if(ss == null){
+    	 error+= "<li>SS is required.<li>";
+    	 ss = "";
+     }
+	if(vse == null){
+    	 error+= "<li>VSE is required.<li>";
+    	 vse = "";
+     }
 		
-		String rslt = "";
-		rslt += "\nSchool Year: " + dropDown + " ||| Fenwick: " + fenwick + " ||| Johnson Center: " + johnson + " ||| Robinson Hall B: " + robinson + " ||| Southside: " + southside  + " ||| Volgenau: " + volgenau;
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		PrintHead(out);
-		PrintBody(out, rslt.toString());
-		PrintTail(out);
+     response.setContentType("text/html");
+     PrintWriter out = response.getWriter();
+
+     if (error.length() == 0){
+       PrintWriter entriesPrintWriter = new PrintWriter(new FileWriter(RESOURCE_FILE, true), true);
+       entriesPrintWriter.println(name+VALUE_SEPARATOR+year+VALUE_SEPARATOR+jc+VALUE_SEPARATOR+fw+VALUE_SEPARATOR+rb+VALUE_SEPARATOR+ss+VALUE_SEPARATOR+fw);
+       entriesPrintWriter.close();
+
+       PrintHead(out);
+       PrintResponseBody(out, RESOURCE_FILE);
+       PrintTail(out);
+     }else{
+       PrintHead(out);
+       PrintBody(out, name, year, jc, fw, rb, ss, vse, error);
+       PrintTail(out);
+     }
 		
-		
-		   HttpSession session = request.getSession();
-   String name   = request.getParameter("attrib_name");
-   String value  = request.getParameter("attrib_value");
-   String remove = request.getParameter("attrib_remove");
-
-      String action = request.getParameter("action");
-
-   if (action != null && action.equals("invalidate"))
-   {  // Called from the invalidate button, kill the session.
-      // Get session object
-      session.invalidate();
-
-      response.setContentType("text/html");
-
-      out.println("<html>");
-      out.println("<head>");
-      out.println(" <title>Session lifecycle</title>");
-      out.println("</head>");
-      out.println("");
-      out.println("<body>");
-
-      out.println("<p>Your session has been invalidated.</P>");
-      }
-	
-		
-		   
-            String lifeCycleURL = "/assignment8"; // --------------------------------------------
-      out.print  ("<br><br><a href=\"" + lifeCycleURL + "?action=invalidate\">");
-      out.println("Invalidate the session</a>");
-       out.println("<br>");
-	} // End doPost
+	}
 
 	/**
 	 * ***************************************************** Overrides HttpServlet's
@@ -155,9 +171,11 @@ public class assignment8 extends HttpServlet {
 	 * ***************************************************** Prints the <BODY> of
 	 * the HTML page with the form data values from the parameters.
 	 */
-	private void PrintBody(PrintWriter out,  String rslt) {
-	
-		out.println("<body>");
+	private void PrintBody (PrintWriter out, String name, String year, String jc, String fw, String rb, String ss, String vse, String error){
+
+     out.println("<body onLoad=\"setFocus()\">");
+     out.println("<p>");
+     // out.println("<b>Name:</b> Megan Ngo");
    		 out.println("<b>SWE 432: </b> Assignment 8");
 		out.println("<p>");
 		out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
@@ -165,14 +183,31 @@ public class assignment8 extends HttpServlet {
 		out.println("<p><b>Collaboration Summary:</b> Megan and Thomas worked together to build and debug doGet, doPost, printBody, and printHead and then committed it to Heroku. </p>");
 		 out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
 		   out.println("<br>");
+     out.println("</p>");
 
-			// these three lines are from the original servlet
-		   out.println("<form method=\"post\"");
-		   out.println(" action=\"https://" + Domain + Path + Servlet + "\">");
-		   out.println("");
+     if(error != null && error.length() > 0){
+       out.println("<p style=\"color:red;\">Please correct the following and resubmit.</p>");
+       out.println("<ol>");
+       out.println(error);
+       out.println("</ol>");
+     }
+		
+		  out.print  ("<form name=\"persist2file\" method=\"post\"");
+     out.println(" action=\""+Domain+Path+Servlet+"\">");
+     out.println("");
+		
+		     out.println(" <table>");
+     out.println("  <tr>");
+     out.println("   <td>Name:</td>");
+     out.println("   <td><input type=\"text\" name=\""+Data.NAME.name()
+      +"\" value=\""+name+"\" size=30 required></td>");
+     out.println("  </tr>");
+     out.println("  <tr>");
+		 out.println(" </table>");
 		   
 		out.println("What year are you?");         
-		out.println("  <select name= \"School Year\">"); 
+		out.println("  <select name=\""+Data.YEAR.name() +"\" value=\""+year+"\" size=30 required>");
+			    // name= \"School Year\">"); 
 		out.println("  <option value= \"Freshman\" selected=\"selected\">Freshman</option>"); 
 		out.println("  <option value=\"Sophomore\">Sophomore</option>"); 
 		out.println("  <option value=\"Junior\">Junior</option>"); 
@@ -194,74 +229,11 @@ public class assignment8 extends HttpServlet {
 		out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"five\" value=\"5\" />");
 		out.println(" <label for=\"five\">5</label>");
 
-		out.println("<br> ");
-		out.println("<b>Johnson Center</b>");
-		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\"JC\" id=\"one\" value=\"1\" />"); 
-		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\"JC\" id=\"two\" value=\"2\" />");
-		out.println("  <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\"JC\" id=\"three\" value=\"3\" />");
-		out.println("  <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\"JC\" id=\"four\" value=\"4\" />");
-		out.println("  <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\"JC\" id=\"five\" value=\"5\" />");
-		out.println("  <label for=\"five\">5</label>");
 
-		out.println("<br>");
-
-		out.println("<b>Robinson Hall B</b>");
-		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\"RB\" id=\"one\" value=\"1\" /> ");
-		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\"RB\" id=\"two\" value=\"2\" />");
-		out.println("  <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\"RB\" id=\"three\" value=\"3\" />");
-		out.println("  <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\"RB\" id=\"four\" value=\"4\" />");
-		out.println("  <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\"RB\" id=\"five\" value=\"5\" />");
-		out.println("  <label for=\"five\">5</label>");
-
-		out.println("<br>");
-
-		out.println("<b>Southside</b>");
-		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\"Southside\" id=\"one\" value=\"1\" />"); 
-		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\"Southside\" id=\"two\" value=\"2\" />");
-		out.println(" <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\"Southside\" id=\"three\" value=\"3\" /");
-		out.println(" <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\"Southside\" id=\"four\" value=\"4\" />");
-		out.println(" <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\"Southside\" id=\"five\" value=\"5\" />");
-		out.println(" <label for=\"five\">5</label>");
-
-		out.println("<br>");
-
-		out.println("<b>Volgenau School of Engineering</b>");
-		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\"VSE\" id=\"one\" value=\"1\" /> ");
-		out.println("  <label for=\"one\">1</label> ");
-		out.println("  <input type=\"radio\" name=\"VSE\" id=\"two\" value=\"2\" />");
-		out.println("  <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\"VSE\" id=\"three\" value=\"3\" />");
-		out.println("  <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\"VSE\" id=\"four\" value=\"4\" />");
-		out.println("  <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\"VSE\" id=\"five\" value=\"5\" />");
-		out.println("  <label for=\"five\">5</label>");
-		out.println("<br>");
-		out.println("<p></p>");
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
 
 		out.println("</form>");
 		
-    		if (!rslt.equals("")) {
-			out.println("Result: ");
-			out.println(rslt);
-        	}
 	
 	} // End doGet
 
@@ -270,7 +242,7 @@ public class assignment8 extends HttpServlet {
 	 * the HTML page, no <body>.
 	 */
 	private void PrintHead(PrintWriter out) {
-		out.println("<html>");
+	/*	out.println("<html>");
 		out.println("");
 
 		out.println("<head>");
@@ -280,7 +252,22 @@ public class assignment8 extends HttpServlet {
 		out.println("");
 		
 		out.println("");
-		out.println("</body>");
+		out.println("</body>"); */
+		
+		
+	out.println("<html>");
+		
+     out.println("");
+     out.println("<head>");
+     out.println("<title>Assignment 8</title>");
+     // Put the focus in the name field
+     out.println ("<script>");
+     out.println ("  function setFocus(){");
+     out.println ("    document.persist2file.NAME.focus();");
+     out.println ("  }");
+     out.println ("</script>");
+     out.println("</head>");
+     out.println("");
 	} // End PrintBody
 
 	/**
