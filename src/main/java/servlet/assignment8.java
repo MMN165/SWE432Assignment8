@@ -1,7 +1,4 @@
-/** *****************************************************************
-    assignment6.java   servlet example
-        @author Jeff Offutt
-********************************************************************* */
+
 // package servlet;
 // Import Java Libraries
 import java.io.*;
@@ -129,7 +126,7 @@ public class assignment8 extends HttpServlet {
 	private void PrintBody(PrintWriter out,  String rslt) {
 	
 		out.println("<body>");
-   		 out.println("<b>SWE 432: </b> Assignment 6");
+   		 out.println("<b>SWE 432: </b> Assignment 8");
 		out.println("<p>");
 		out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
 		out.println("</p>");
@@ -245,7 +242,7 @@ public class assignment8 extends HttpServlet {
 		out.println("");
 
 		out.println("<head>");
-		out.println("<title>Assignment 6</title>");
+		out.println("<title>Assignment 8</title>");
 		out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + Style + "\">");
 		out.println("</head>");
 		out.println("");
