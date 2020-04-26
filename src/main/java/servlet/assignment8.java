@@ -119,6 +119,50 @@ public class assignment8 extends HttpServlet {
      }
 		
 	}
+	
+	  /** *****************************************************
+   *  Prints the <BODY> of the HTML page
+  ********************************************************* */
+  private void PrintResponseBody (PrintWriter out, String resourcePath){
+    out.println("<body onLoad=\"setFocus()\">");
+    out.println("<p>");
+    out.println("A simple example that demonstrates how to persist data to a file");
+    out.println("</p>");
+    out.println("");
+    out.println(" <table>");
+
+    try {
+        out.println("  <tr>");
+        out.println("   <th>Name</th>");
+        out.println("  </tr>");
+        File file = new File(resourcePath);
+        if(!file.exists()){
+          out.println("  <tr>");
+          out.println("   <td>No entries persisted yet.</td>");
+          out.println("  </tr>");
+          return;
+        }
+
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+          String []  entry= line.split(VALUE_SEPARATOR);
+          out.println("  <tr>");
+          for(String value: entry){
+              out.println("   <td>"+value+"</td>");
+          }
+          out.println("  </tr>");
+        }
+        bufferedReader.close();
+      } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+     out.println(" </table>");
+     out.println("");
+     out.println("</body>");
+  }
 
 	/**
 	 * ***************************************************** Overrides HttpServlet's
