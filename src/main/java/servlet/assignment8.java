@@ -226,6 +226,8 @@ public class assignment8 extends HttpServlet {
 	 */
 	private void PrintBody (PrintWriter out, String name, String year, String jc, String fw, String rb, String ss, String vse, String error){
 
+	
+	    
      out.println("<body onLoad=\"setFocus()\">");
      out.println("<p>");
      // out.println("<b>Name:</b> Megan Ngo");
@@ -236,6 +238,19 @@ public class assignment8 extends HttpServlet {
 		out.println("<p><b>Collaboration Summary:</b> Megan and Thomas worked together to build and debug doGet, doPost, printBody, and printHead and then committed it to Heroku. </p>");
 		 out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
 		   out.println("<br>");
+		
+		out.println("<p>");
+   		 out.println("At minimum, your program must save all the information from the review in a file, and then echo all reviews.  ");
+   		 out.println("Doing the minimum will be worth 80% (16 points). Additional features will earn additional points, as follows.  ");
+   		 out.println("Note that implementing enough features can result in extra credit beyond the standard 100% (20 points).  ");
+    		 out.println("   (4 points) — A different program (ReactJS front-end or second servlet) or new React component (like tabs) to display all reviews.  ");
+    		 out.println("If you choose this option, 2 points will be based on usability quality. ");
+    		 out.println("   (1 point) — An average or aggregate summary of all reviews.");
+    		 out.println("   (1 point) — Store the data in XML format. ");
+    		 out.println("   (2 points) — Store the data into a database. ");
+    		 out.println("   (1 point) — Filter unacceptable words from the reviews. ");
+    		 out.println("   (1 point) — Add use of a session object—you choose what to use it for. (Added April 21) ");
+		out.println("</p>");
      out.println("</p>");
 
      if(error != null && error.length() > 0){
