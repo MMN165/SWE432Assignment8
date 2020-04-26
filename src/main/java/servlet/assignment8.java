@@ -264,6 +264,7 @@ public class assignment8 extends HttpServlet {
      out.println("  </tr>");
      out.println("  <tr>");
 		 out.println(" </table>");
+			out.println("<br> ");
 		   
 		out.println("What year are you?");         
 		out.println("  <select name=\""+Data.YEAR.name() +"\" value=\""+year+"\">");//size=30 required>");
