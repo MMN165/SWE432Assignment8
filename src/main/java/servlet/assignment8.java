@@ -130,7 +130,9 @@ public class assignment8 extends HttpServlet {
     out.println("</p>");
     out.println("");
     out.println(" <table>");
-
+	  
+ out.println(" <style> able, th, td { border: 1px solid black; } </style> ");
+	
     try {
 	 out.println("  <table>");
         out.println("  <tr>");
