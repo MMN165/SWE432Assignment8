@@ -80,9 +80,16 @@ public class final432 extends HttpServlet {
 		out.println("<br>");
 			
 
-
-Arrays.toString(list1.toArray());
-Arrays.toString(logical.toArray());
+		
+	      for (int i = 0; i < list1.size();i++) 
+	      { 		      
+	          System.out.println(list1.get(i)); 		
+	      }   
+	      
+	      for (int i = 0; i < logical.size();i++) 
+	      { 		      
+	          System.out.println(logical.get(i)); 		
+	      }   
 
      int[] x = new int[2];
      out.println("  <tr>");
