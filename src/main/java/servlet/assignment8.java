@@ -80,15 +80,16 @@ public class final432 extends HttpServlet {
 		out.println("<br>");
 			
 
-		
+		out.println(list1.size());
+		out.println(logical.size());
 	      for (int i = 0; i < list1.size();i++) 
 	      { 		      
-	          System.out.println(list1.get(i)); 		
+	          out.println(list1.get(i)); 		
 	      }   
 	      
 	      for (int i = 0; i < logical.size();i++) 
 	      { 		      
-	          System.out.println(logical.get(i)); 		
+	          out.println(logical.get(i)); 		
 	      }   
 
      int[] x = new int[2];
@@ -164,8 +165,10 @@ public class final432 extends HttpServlet {
 	   }
 	}
 	
-	void parseInput(String input) {
+	void parseInput(PrintWriter out, String input) {
         String[] splitting = input.split(" ", 10); 
+        for (int i = 0; i < splitting.length; i++)
+        	out.println(splitting[i]);
         list1 = new ArrayList<String>();
         Collections.addAll(list1, splitting);
         
@@ -241,38 +244,6 @@ public class final432 extends HttpServlet {
 		PrintBody(out);
 		PrintTail(out);
 		
-	
-						
-		   HttpSession session = request.getSession();
-  //  String name   = request.getParameter("attrib_name");
-
-      String action = request.getParameter("action");
-
-   if (action != null && action.equals("invalidate"))
-   {  // Called from the invalidate button, kill the session.
-      // Get session object
-      session.invalidate();
-
-      response.setContentType("text/html");
-
-      out.println("<html>");
-      out.println("<head>");
-      out.println(" <title>Session lifecycle</title>");
-      out.println("</head>");
-      out.println("");
-      out.println("<body>");
-
-      out.println("<p>Your session has been invalidated.</P>");
-      }
-	
-		
-		   
-            String lifeCycleURL = "/final"; // --------------------------------------------
-      out.print  ("<br><a href=\"" + lifeCycleURL + "?action=invalidate\">");
-      out.println("Invalidate the session</a>");
-       out.println("<br>");
-		
-		
 	} // End PrintHead
 
 	/**
@@ -308,7 +279,7 @@ public class final432 extends HttpServlet {
 		 out.println(" </table>");
 			out.println("<br> ");
 		   
-		parseInput(Data.NAME.name());
+		parseInput(out, name);
 		
 		ands = new ArrayList<String>();
 		ands.add("AND");
