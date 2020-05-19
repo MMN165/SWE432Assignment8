@@ -12,10 +12,9 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "assignment8", // "MyServlet2",
-		urlPatterns = { "/assignment8" })
+@WebServlet(name = "final432", 
+		urlPatterns = { "/final432" })
 
-// assignment6 class
 // CONSTRUCTOR: no constructor specified (default)
 //
 // ***************  PUBLIC OPERATIONS  **********************************
@@ -30,7 +29,7 @@ import javax.servlet.annotation.WebServlet;
 // private void PrintTail (PrintWriter out) --> Prints the HTML bottom
 //***********************************************************************
 
-public class assignment8 extends HttpServlet {
+public class final432 extends HttpServlet {
 
 	/**
 	 * 
@@ -38,7 +37,7 @@ public class assignment8 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static String Domain = "";
 	static String Path = "/";
-	static String Servlet = "assignment8";
+	static String Servlet = "final432";
 	
 // Button labels
 	static String OperationAdd = "Add";
@@ -48,6 +47,11 @@ public class assignment8 extends HttpServlet {
 // Other strings.
 	static String Style = "https://www.cs.gmu.edu/~offutt/classes/432/432-style.css";
 	
+	static List<String> list1;
+	static List<String> logical;
+	static List<String> ands;
+	static List<String> ors;
+	static List<String> vars;
 	
 	  static enum Data {NAME, YEAR, JC, FW, RB, SS, VSE};
   static String RESOURCE_FILE = "entries.txt";
@@ -61,52 +65,33 @@ public class assignment8 extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String name = request.getParameter(Data.NAME.name());
-     		String year = request.getParameter(Data.YEAR.name());
-		String jc = request.getParameter(Data.JC.name());
-		String fw = request.getParameter(Data.FW.name());
-		String rb = request.getParameter(Data.RB.name());
-		String ss = request.getParameter(Data.SS.name());
-		String vse = request.getParameter(Data.VSE.name());
      
      String error = "";
      if(name == null){
-       error= "<li>Name is required</li>";
+       error= "<li>Input is required</li>";
        name = "";
-     }
-
-     if(year == null){
-       error+= "<li>Year is required.<li>";
-       year = "";
-       
-     }
-     if(jc == null){
-    	 error+= "<li>JC is required.<li>";
-    	 jc = "";
-     }
-     if(fw == null){
-    	 error+= "<li>FW is required.<li>";
-    	 fw = "";
-     }
-	if(rb == null){
-    	 error+= "<li>RB is required.<li>";
-    	 rb = "";
-     }
-	if(ss == null){
-    	 error+= "<li>SS is required.<li>";
-    	 ss = "";
-     }
-	if(vse == null){
-    	 error+= "<li>VSE is required.<li>";
-    	 vse = "";
-     }
-		
+     }	
 
      response.setContentType("text/html");
      PrintWriter out = response.getWriter();
 
+
+		out.println(name);
+		out.println("<br>");
+			
+
+
+Arrays.toString(list1.toArray());
+Arrays.toString(logical.toArray());
+
+     int[] x = new int[2];
+     out.println("  <tr>");
+     printTruthTable(out, 2, 0, x, 0, 0);
+     out.println("  </tr>");
+     
      if (error.length() == 0){
        PrintWriter entriesPrintWriter = new PrintWriter(new FileWriter(RESOURCE_FILE, true), true);
-       entriesPrintWriter.println(name+VALUE_SEPARATOR+year+VALUE_SEPARATOR+jc+VALUE_SEPARATOR+fw+VALUE_SEPARATOR+rb+VALUE_SEPARATOR+ss+VALUE_SEPARATOR+vse);
+       entriesPrintWriter.println(name);
        entriesPrintWriter.close();
 
        PrintHead(out);
@@ -114,12 +99,79 @@ public class assignment8 extends HttpServlet {
        PrintTail(out);
      }else{
        PrintHead(out);
-       PrintBody(out, name, year, jc, fw, rb, ss, vse, error);
+       PrintBody(out, name, error);
        PrintTail(out);
      }
 		
 	}
 	
+	/* A recursive algorithm to print a truth table of 1s and 0s.
+	 N is the number of clauses, or columns, in the truth table.
+	 index should be zero on the first call
+	 truthVals starts as an empty array of integers of size N 
+	 count is the index in the arraylist. if it's an even then it's a logic symbol
+	 logic is the symbol. we will use 0 for &&, 1 for |
+	 */
+	void printTruthTable(PrintWriter out, int N, int index, int[] truthVals, int count, int logic) {
+		
+	   if (index == N) {
+	      for (int i=0; i<N; i++) {
+	    	  out.println("  <th>");
+	         out.println(truthVals[i] + " ");
+	         out.println("  </th>");
+	         if (i == N-1) {
+	        	 int val = 0;
+	        	 if (truthVals.length >= 2 ) {
+	        		 if (logic == 0) {
+	        			 out.println(truthVals[0] & truthVals[1]);
+	        		 }
+	        		 else if (logic == 1) {
+	        			 out.println(truthVals[0] | truthVals[1]); 
+	        		 }
+	        		 else { // xor, logic == 3
+	        			 out.println(truthVals[0] ^ truthVals[1]); 
+	        		 }
+	        	 }
+	        	 out.println("yes!");
+	         }
+	      }
+	      out.println("<br>");
+	   } 
+	   else {
+		 /*  if (count % 2 != 0) {
+			   String temp = list1.get(count);
+			
+			   if (ands.contains(temp)) {
+				   logic = 0;
+			   }
+			   else if (ors.contains(temp)) {
+				   logic = 1 ;
+			   }
+		   } */
+			
+	      for (int j = 0; j < 2; j++) {
+	         truthVals[index] = j;
+	  	   	count++;
+	         printTruthTable(out, N, index + 1, truthVals, count, logic);
+	      }
+	   }
+	}
+	
+	void parseInput(String input) {
+        String[] splitting = input.split(" ", 10); 
+        list1 = new ArrayList<String>();
+        Collections.addAll(list1, splitting);
+        
+        
+        logical = new ArrayList<String>();
+        int i = 0;
+        while(i < list1.size()){
+        	   if(i % 2 == 1){ // If value is odd
+        	      logical.add(list1.get(i));
+        	   }
+        	   i++;
+        	}
+	}
 	  /** *****************************************************
    *  Prints the <BODY> of the HTML page
   ********************************************************* */
@@ -136,13 +188,11 @@ public class assignment8 extends HttpServlet {
     try {
 	 out.println("  <table>");
         out.println("  <tr>");
-        out.println("   <th>Name</th>");
-	out.println("   <th>Year</th>");
-        out.println("   <th>JC</th>");
-	out.println("   <th>FW</th>");
-	out.println("   <th>RB</th>");
-	out.println("   <th>SS</th>");
-	out.println("   <th>VSE</th>");
+        out.println("   <th>Input</th>");
+	out.println("   <th>Var 1</th>");
+        out.println("   <th>Var 2</th>");
+	out.println("   <th>Var 3</th>");
+	out.println("   <th>Result</th>");
         out.println("  </tr>");
         File file = new File(resourcePath);
         if(!file.exists()){
@@ -187,9 +237,7 @@ public class assignment8 extends HttpServlet {
 	
 						
 		   HttpSession session = request.getSession();
-   String name   = request.getParameter("attrib_name");
-   String value  = request.getParameter("attrib_value");
-   String remove = request.getParameter("attrib_remove");
+  //  String name   = request.getParameter("attrib_name");
 
       String action = request.getParameter("action");
 
@@ -212,7 +260,7 @@ public class assignment8 extends HttpServlet {
 	
 		
 		   
-            String lifeCycleURL = "/assignment8"; // --------------------------------------------
+            String lifeCycleURL = "/final"; // --------------------------------------------
       out.print  ("<br><a href=\"" + lifeCycleURL + "?action=invalidate\">");
       out.println("Invalidate the session</a>");
        out.println("<br>");
@@ -224,28 +272,15 @@ public class assignment8 extends HttpServlet {
 	 * ***************************************************** Prints the <BODY> of
 	 * the HTML page with the form data values from the parameters.
 	 */
-	private void PrintBody (PrintWriter out, String name, String year, String jc, String fw, String rb, String ss, String vse, String error){
+	private void PrintBody (PrintWriter out, String name, String error){
 
 	
 	    
      out.println("<body onLoad=\"setFocus()\">");
      out.println("<p>");
-     // out.println("<b>Name:</b> Megan Ngo");
-   		 out.println("<b>SWE 432: </b> Assignment 8");
+   		 out.println("<b>SWE 432 FINAL: </b> Megan Ngo");
 		out.println("<p>");
-		out.println("<b>Partners:</b> Megan Ngo and Thomas Rigger");
-		out.println("</p>");
-		out.println("<p><b>Collaboration Summary:</b> Megan and Thomas worked together to build and debug doGet, doPost, printBody, and printHead and then committed it to Heroku. </p>");
-		
-		out.println("<p>");
-   		out.println("<b>Additional Features Implemented:</b>");
-    		 out.println("<p>   (1 point) - Store the data in XML format. </p>");
-    		 out.println("<p>   (2 points) - Store the data into a database. ");
-    		 out.println("<p>   (1 point) - Filter unacceptable words from the reviews. </p>");
-    		 out.println("<p>   (1 point) - Add use of a session object (invalidate) </p>");
-		out.println("</p>");
-		out.println("<br>");
-		out.println("<p><b>Survey Instructions:</b> Please fill out this form to rate GMU buildings.</p>");
+		out.println("<p><b>Instructions:</b> Please input a boolean predicate string.</p>");
      out.println("</p>");
 
      if(error != null && error.length() > 0){
@@ -259,111 +294,37 @@ public class assignment8 extends HttpServlet {
 		
 		     out.println(" <table>");
      out.println("  <tr>");
-     out.println("   <td>Name:</td>");
+     out.println("   <td>Input:</td>");
      out.println("   <td><input type=\"text\" name=\""+Data.NAME.name()+"\" value=\""+name+"\" size=30 required></td>");
      out.println("  </tr>");
      out.println("  <tr>");
 		 out.println(" </table>");
 			out.println("<br> ");
 		   
-		out.println("What year are you?");         
-		out.println("  <select name=\""+Data.YEAR.name() +"\" value=\""+year+"\">");//size=30 required>");
-			    // name= \"School Year\">"); 
-		out.println("  <option value= \"Freshman\" selected=\"selected\">Freshman</option>"); 
-		out.println("  <option value=\"Sophomore\">Sophomore</option>"); 
-		out.println("  <option value=\"Junior\">Junior</option>"); 
-		out.println(" <option value=\"Senior\">Senior</option>"); 
-		out.println("</select>"); 
-
-		out.println("<br> <br> Please rate the following GMU buildings on a scale of 1 (worst) to 5 (best): <br> <br> ");
+		parseInput(Data.NAME.name());
 		
-		out.println("<b>Johnson Center</b>");
-		out.println("<br>");
-		// out.println("  <input type=\"radio\" name=\"JC\" id=\"one\" value=\"1\" />"); 
-		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"one\" value=\"1\">");
-		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\"name=\""+Data.JC.name() +"\" id=\"two\" value=\"2\" />");
-		out.println("  <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"three\" value=\"3\" checked=\"true\" />");
-		out.println("  <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"four\" value=\"4\" />");
-		out.println("  <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.JC.name() +"\" id=\"five\" value=\"5\" />");
-		out.println("  <label for=\"five\">5</label>");
-
-		out.println("<br> ");
-		out.println("<b>Fenwick Library</b>");    
-		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\""+Data.FW.name() +"\" id=\"one\" value=\"1\">");
-		// out.println("  <input type=\"radio\" name=\"Fenwick\" id=\"one\" value=\"1\" /> ");
-		out.println("  <label for=\"one\">1</label> ");
-		out.println("  <input type=\"radio\" name=\""+Data.FW.name() +"\" id=\"two\" value=\"2\" /> ");
-		out.println(" <label for=\"two\">2</label> ");
-		out.println("  <input type=\"radio\" name=\""+Data.FW.name() +"\" id=\"three\" value=\"3\" checked=\"true\" /> ");
-		out.println(" <label for=\"three\">3</label> ");
-		out.println("  <input type=\"radio\" name=\""+Data.FW.name() +"\" id=\"four\" value=\"4\" />");
-		out.println(" <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.FW.name() +"\" id=\"five\" value=\"5\" />");
-		out.println(" <label for=\"five\">5</label>");
-
-		out.println("<br>");
-
-		out.println("<b>Robinson Hall B</b>");
-		out.println("<br>");
-		// out.println("  <input type=\"radio\" name=\"RB\" id=\"one\" value=\"1\" /> ");
-		out.println("  <input type=\"radio\" name=\""+Data.RB.name() +"\" id=\"one\" value=\"1\">");
-		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\""+Data.RB.name() +"\" id=\"two\" value=\"2\" />");
-		out.println("  <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.RB.name() +"\" id=\"three\" value=\"3\" checked=\"true\" />");
-		out.println("  <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.RB.name() +"\" id=\"four\" value=\"4\" />");
-		out.println("  <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.RB.name() +"\" id=\"five\" value=\"5\" />");
-		out.println("  <label for=\"five\">5</label>");
-
-		out.println("<br>");
-
-		out.println("<b>Southside</b>");
-		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\""+Data.SS.name() +"\" id=\"one\" value=\"1\">");
-		// out.println("  <input type=\"radio\" name=\"Southside\" id=\"one\" value=\"1\" />"); 
-		out.println("  <label for=\"one\">1</label>"); 
-		out.println("  <input type=\"radio\" name=\""+Data.SS.name() +"\" id=\"two\" value=\"2\" />");
-		out.println(" <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.SS.name() +"\" id=\"three\" value=\"3\" checked=\"true\" /");
-		out.println(" <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.SS.name() +"\" id=\"four\" value=\"4\" />");
-		out.println(" <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.SS.name() +"\" id=\"five\" value=\"5\" />");
-		out.println(" <label for=\"five\">5</label>");
-
-		out.println("<br>");
-
-		out.println("<b>Volgenau School of Engineering</b>");
-		out.println("<br>");
-		out.println("  <input type=\"radio\" name=\""+Data.VSE.name() +"\" id=\"one\" value=\"1\">");
-		// out.println("  <input type=\"radio\" name=\"VSE\" id=\"one\" value=\"1\" /> ");
-		out.println("  <label for=\"one\">1</label> ");
-		out.println("  <input type=\"radio\" name=\""+Data.VSE.name() +"\" id=\"two\" value=\"2\" />");
-		out.println("  <label for=\"two\">2</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.VSE.name() +"\" id=\"three\" value=\"3\" checked=\"true\" />");
-		out.println("  <label for=\"three\">3</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.VSE.name() +"\" id=\"four\" value=\"4\" />");
-		out.println("  <label for=\"four\">4</label>");
-		out.println("  <input type=\"radio\" name=\""+Data.VSE.name() +"\" id=\"five\" value=\"5\" />");
-		out.println("  <label for=\"five\">5</label>");
-		out.println("<br>");
-		out.println("<p></p>");
+		ands = new ArrayList<String>();
+		ands.add("AND");
+		ands.add("and");
+		ands.add("&&");
+		ors = new ArrayList<String>();
+		ors.add("OR");
+		ors.add("or");
+		ors.add("|");
+		vars = new ArrayList<String>();
+		vars.add("A");
+		vars.add("B");
+		vars.add("x");
+		vars.add("y");
+		vars.add("M");
+		vars.add("N");
+		vars.add("Q");
+		vars.add("today");
+		vars.add("tomorrow");
+	
 		
 		out.println("<input type=\"submit\" onclick=\"doPost()\" value=\"Submit\">");
 
-	/*	out.println("</form>");
-
-		     out.println(" <input type=\"submit\" value=\"" + OperationAdd
-      + "\" name=\"Operation\">");
-     out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
-     out.println("</form>"); */
      out.println("");
      out.println("</body>");
 		out.println("<br>");
@@ -379,24 +340,12 @@ public class assignment8 extends HttpServlet {
 	 * the HTML page, no <body>.
 	 */
 	private void PrintHead(PrintWriter out) {
-	/*	out.println("<html>");
-		out.println("");
-
-		out.println("<head>");
-		out.println("<title>Assignment 8</title>");
-		out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"" + Style + "\">");
-		out.println("</head>");
-		out.println("");
-		
-		out.println("");
-		out.println("</body>"); */
-		
 		
 	out.println("<html>");
 		
      out.println("");
      out.println("<head>");
-     out.println("<title>Assignment 8</title>");
+     out.println("<title>Final</title>");
      // Put the focus in the name field
      out.println ("<script>");
      out.println ("  function setFocus(){");
@@ -412,7 +361,7 @@ public class assignment8 extends HttpServlet {
 	 * (out,lhs,rhs,rslt) to print a page with blanks in the form fields.
 	 */
 	private void PrintBody(PrintWriter out) {
-		PrintBody(out, "", null, null, null, null, null, null, null);
+		PrintBody(out, "", null);
 	}
 
 
@@ -424,5 +373,7 @@ public class assignment8 extends HttpServlet {
 		out.println("");
 		out.println("</html>");
 	} // End PrintTail
+	
 
-} // End assignment6
+
+} //
